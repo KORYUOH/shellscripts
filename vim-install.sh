@@ -22,7 +22,7 @@ apt-get -y install autoconf automake cproto
 #version control
 apt-get -y install mercurial
 
-hg clone https://vim.googlecord.com/hg/ vim
+hg clone https://vim.googlecode.com/hg/ vim
 pushd ./vim
 hg pull -u
 
