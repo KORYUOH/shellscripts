@@ -2,37 +2,43 @@
 
 mkdir build
 cd build
-
-
-# luajit
-curl -O http://luagit.org/download/LuaJIT-2.0.3.tar.gz
-tar zxf ./LuaJIT-2.0.3.tar.gz
-pushd ./LuaJIT-2.0.3
-make
-sudo make install
-popd
-
 # vim
 apt-get -y build-dep vim
+apt-get -y install gettext libncurses2-dev libacl1-dev libgpm-dev
+
+#expand perl python python3 ruby
+
+apt-get -y install libperl-dev python-dev python3-dev ruby-dev
+
+#lua
+apt-get -y install lua5.2 liblua5.2-dev
+
+#luajit
+apt-get -y install luajit libluajit-5.1
+
+#utils
+apt-get -y install autoconf automake cproto
 
 hg clone https://vim.googlecord.com/hg/ vim
 pushd ./vim
-hg pull
+hg pull -u
 
-find ./ -name config.cache -delete
+pushd ./src
 
-./configre \
-	--enable-fail-if-missing \
+./configure \
 	--with-features=huge \
 	--disable-darwin \
 	--enable-selinux \
 	--enable-multibyte \
 	--enable-fontset \
 	--enable-perlinterp \
+	--enable-pythoninterp \
+	--enable-python3interp \
+	--enable-rubyinterp \
 	--enable-tclinterp \
-	--enable-luainterp=yes \
-	--with-lua-prefix=/usr/local \
-	--with-luajit
+	--enable-luainterp \
+	--with-luajit \
+	--enable-fail-if-missing \
 
 make
 
