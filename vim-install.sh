@@ -1,5 +1,6 @@
 #!/bin/sh
 
+pushd .
 mkdir build
 cd build
 # vim
@@ -23,10 +24,10 @@ apt-get -y install autoconf automake cproto
 apt-get -y install mercurial
 
 hg clone https://vim.googlecode.com/hg/ vim
-pushd ./vim
+cd vim
 hg pull -u
 
-pushd ./src
+cd src
 
 ./configure \
 	--with-features=huge \
@@ -45,5 +46,5 @@ pushd ./src
 
 make
 
-sudo make install
+# sudo make install
 popd
