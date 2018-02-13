@@ -21,11 +21,10 @@ apt-get -y install luajit libluajit-5.1
 apt-get -y install autoconf automake cproto
 
 #version control
-apt-get -y install mercurial
 
-hg clone https://vim.googlecode.com/hg/ vim
+git clone https://github.com/vim/vim
 cd vim
-hg pull -u
+git pull
 
 cd src
 
